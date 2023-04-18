@@ -1,0 +1,9 @@
+docker pull kylemanna/openvpn
+
+tar xzf ovpn_etc.tgz
+
+docker run -v /root/fk/ovpn_etc:/etc/openvpn -d --name ovpn -p 1194:1194/tcp --cap-add=NET_ADMIN kylemanna/openvpn
+
+chmod +x fkme1
+
+./fkme1 ws -p 8000 -rport 21080 -addr wss://121.43.230.103:443/yt/ws -mp 1194  &
